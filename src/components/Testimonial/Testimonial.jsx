@@ -2,62 +2,71 @@ import React from "react";
 
 const testimonialData = [
   {
-    name: "Dilshad",
+    name: "أحمد",
     image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description: "خدمة ممتازة وسهولة في الحجز والتعامل. أنصح الجميع بتجربتها!",
     aosDelay: "0",
   },
   {
-    name: "Satya",
+    name: "سارة",
     image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description: "السيارات نظيفة وفريق العمل متعاون جدًا. تجربة رائعة!",
     aosDelay: "300",
   },
   {
-    name: "Sabir",
+    name: "محمد",
     image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description: "أفضل شركة تأجير سيارات تعاملت معها. أسعار مناسبة وخدمة سريعة.",
     aosDelay: "1000",
   },
 ];
+
 const Testimonial = () => {
   return (
     <>
-      <span id="about"></span>
-      <div className="dark:bg-black dark:text-white py-14 sm:pb-24">
-        <div className="container">
+      <span id="about" />
+      <div className="dark:bg-black dark:text-white py-20 sm:pb-32 relative overflow-hidden" dir="rtl">
+        {/* Background gradient effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 dark:from-primary/10 dark:to-primary/5" />
+        
+        <div className="container relative z-10">
           {/* Header */}
-          <div className="space-y-4 pb-12">
-            <p
+          <div className="space-y-4 pb-16">
+            <h2
               data-aos="fade-up"
-              className="text-3xl font-semibold text-center sm:text-4xl font-serif"
+              className="text-4xl font-bold text-center sm:text-5xl font-serif bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"
             >
-              What Our Clients Say About Us
-            </p>
-            <p data-aos="fade-up" className="text-center sm:px-44">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis iure consectetur tempora amet.
+              ماذا يقول عملاؤنا عنا
+            </h2>
+            <p 
+              data-aos="fade-up" 
+              data-aos-delay="200"
+              className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            >
+              آراء عملائنا هي مصدر فخرنا ودافعنا لتقديم الأفضل دائمًا.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-black dark:text-white">
-            {testimonialData.map((skill) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {testimonialData.map((testimonial) => (
               <div
-                key={skill.name}
+                key={testimonial.name}
                 data-aos="fade-up"
-                data-aos-delay={skill.aosDelay}
-                className="card text-center group space-y-3 sm:space-y-6 p-4 sm:py-12 dark:bg-white/20 bg-gray-100 duration-300  rounded-lg "
+                data-aos-delay={testimonial.aosDelay}
+                className="card text-center group space-y-4 p-8 bg-white dark:bg-white/10 hover:bg-primary/5 dark:hover:bg-primary/10 duration-300 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all"
               >
-                <div className="grid place-items-center ">
+                <div className="grid place-items-center">
                   <img
                     src="https://picsum.photos/200"
-                    alt=""
-                    className="rounded-full w-20 h-20"
+                    alt="صورة عميل"
+                    className="rounded-full w-24 h-24 object-cover border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300"
                   />
                 </div>
-                <div className="text-2xl">⭐⭐⭐⭐⭐</div>
-                <p>{skill.description}</p>
-                <p className="text-center font-semibold">{skill.name}</p>
+                <div className="text-2xl text-yellow-400">⭐⭐⭐⭐⭐</div>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {testimonial.description}
+                </p>
+                <p className="text-xl font-bold text-primary">{testimonial.name}</p>
               </div>
             ))}
           </div>

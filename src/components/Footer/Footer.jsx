@@ -1,117 +1,115 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
   FaLocationArrow,
   FaMobileAlt,
+  FaEnvelope,
 } from "react-icons/fa";
 
 const FooterLinks = [
   {
-    title: "Home",
-    link: "/#",
+    title: "الرئيسية",
+    link: "/",
   },
   {
-    title: "About",
-    link: "/#about",
+    title: "السيارات المتاحة",
+    link: "/available-cars",
   },
   {
-    title: "Contact",
-    link: "/#contact",
+    title: "من نحن",
+    link: "/about",
   },
   {
-    title: "Blog",
-    link: "/#blog",
+    title: "الحجز",
+    link: "/booking",
+  },
+  {
+    title: "تواصل معنا",
+    link: "/contact-us",
   },
 ];
+
 const Footer = () => {
   return (
-    <div className="bg-gray-100 dark:bg-dark mt-14 rounded-t-3xl">
-      <section className="container">
-        <div className=" grid md:grid-cols-3 py-5">
-          {/* company Details */}
-          <div className=" py-8 px-4 ">
-            <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3 font-serif">
-              Car Rental
+    <div className="bg-gray-200 dark:bg-gray-900 mt-14 py-10 text-black dark:text-white" dir="rtl">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <h1 className="text-3xl font-bold font-serif">
+              تأجير السيارات
             </h1>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Possimus, voluptate.{" "}
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              نحن نقدم أفضل خدمات تأجير السيارات مع ضمان الجودة والموثوقية. هدفنا هو راحتك ورضاك وتوفير تجربة لا تُنسى.
             </p>
-            <br />
-            <div className="flex items-center gap-3">
-              <FaLocationArrow />
-              <p> Turkey</p>
-            </div>
-            <div className="flex items-center gap-3 mt-3">
-              <FaMobileAlt />
-              <p>+90 5396700366</p>
-            </div>
-            {/* Social Handle */}
-            <div className="flex items-center gap-3 mt-6">
-              <a href="#">
-                <FaInstagram className="text-3xl hover:text-primary duration-300" />
-              </a>
-              <a href="#">
-                <FaFacebook className="text-3xl hover:text-primary duration-300" />
-              </a>
-              <a href="#">
-                <FaLinkedin className="text-3xl hover:text-primary duration-300" />
-              </a>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold mb-3 border-b-2 border-primary inline-block pb-1">
+              روابط سريعة
+            </h2>
+            <ul className="space-y-2">
+              {FooterLinks.map((link) => (
+                <li key={link.title}>
+                  <Link
+                    to={link.link}
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300"
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold mb-3 border-b-2 border-primary inline-block pb-1">
+              تواصل معنا
+            </h2>
+            <div className="space-y-2 text-gray-600 dark:text-gray-300">
+              <div className="flex items-center gap-2">
+                <FaEnvelope className="text-primary" />
+                <span>info@carrental.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaMobileAlt className="text-primary" />
+                <span>+90 5396700366</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaLocationArrow className="text-primary" />
+                <span>اسطنبول، تركيا</span>
+              </div>
             </div>
           </div>
-          {/* Links */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10 ">
-            <div className="">
-              <div className="py-8 px-4 ">
-                <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
-                  Important Links
-                </h1>
-                <ul className={`flex flex-col gap-3`}>
-                  {FooterLinks.map((link) => (
-                    <li className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-500 dark:text-gray-200">
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="">
-              <div className="py-8 px-4 ">
-                <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
-                  Links
-                </h1>
-                <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
-                    <li className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-500 dark:text-gray-200">
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="">
-              <div className="py-8 px-4 ">
-                <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
-                  Location
-                </h1>
-                {/* <ul className="list-disc list-inside"> */}
-                <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
-                    <li className="cursor-pointer hover:translate-x-1 duration-300 hover:!text-primary space-x-1 text-gray-500 dark:text-gray-200">
-                      <span>&#11162;</span>
-                      <span>{link.title}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
+          {/* Social Media (Optional Fourth Column or below) */}
+          <div className="space-y-4">
+             <h2 className="text-xl font-semibold mb-3 border-b-2 border-primary inline-block pb-1">
+              تابعنا
+            </h2>
+            <div className="flex items-center gap-4">
+              <Link to="https://www.instagram.com/" className="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300">
+                <FaInstagram size={24} />
+              </Link>
+              <Link to="https://www.facebook.com/" className="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300">
+                <FaFacebook size={24} />
+              </Link>
+              <Link to="https://www.linkedin.com/" className="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300">
+                <FaLinkedin size={24} />
+              </Link>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Copyright */}
+        <div className="text-center mt-8 pt-8 border-t border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300">
+          &copy; {new Date().getFullYear()} تأجير السيارات. جميع الحقوق محفوظة.
+        </div>
+      </div>
     </div>
   );
 };

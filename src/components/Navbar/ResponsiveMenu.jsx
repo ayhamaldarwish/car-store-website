@@ -1,9 +1,12 @@
 import React from "react";
-import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaUserCircle, FaCar } from "react-icons/fa";
 
 import { Navlinks } from "./Navbar";
 
 const ResponsiveMenu = ({ showMenu }) => {
+  const bookedCarsCount = JSON.parse(localStorage.getItem('bookedCars') || '[]').length;
+
   console.log("showMenu", showMenu);
   return (
     <div
@@ -21,19 +24,39 @@ const ResponsiveMenu = ({ showMenu }) => {
         </div>
         <nav className="mt-12">
           <ul className="space-y-4 text-xl">
-            {Navlinks.map((data) => (
-              <li>
-                <a href={data.link} className="mb-5 inline-block">
-                  {data.name}
-                </a>
+            {Navlinks.map(({ id, name, link }) => (
+              <li key={id}>
+                {link.startsWith('/#') ? (
+                  <a href={link} className="mb-5 inline-block hover:text-primary transition-colors duration-300">
+                    {name}
+                  </a>
+                ) : (
+                  <Link to={link} className="mb-5 inline-block hover:text-primary transition-colors duration-300">
+                    {name}
+                  </Link>
+                )}
               </li>
             ))}
+            <li>
+              <Link 
+                to="/booked-cars" 
+                className="mb-5 inline-flex items-center gap-2 hover:text-primary transition-colors duration-300"
+              >
+                <FaCar />
+                <span>السيارات المحجوزة</span>
+                {bookedCarsCount > 0 && (
+                  <span className="bg-primary text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {bookedCarsCount}
+                  </span>
+                )}
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
       <div className="footer">
         <h1>
-          Made with ❤ by <a href="https://dilshad-ahmed.github.io/">Dilshad</a>{" "}
+          Made with ❤ by <a href="https://dilshad-ahmed.github.io/" className="text-primary hover:underline">Dilshad</a>
         </h1>
       </div>
     </div>

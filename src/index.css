@@ -4,6 +4,19 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Add padding for fixed header */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Smooth scroll for anchor links */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Add smooth scrolling to specific elements */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 @layer components {
